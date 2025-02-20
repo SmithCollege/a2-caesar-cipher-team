@@ -6,12 +6,15 @@ public class DynamicArray<T> implements IndexAccess<T>{
     
     // What instance variables do you need?
     T[] array;
-    //int length;
 
     // Write a constructor to make a new DynamicArray Object from an array
     public DynamicArray(T[] array){
         this.array = array;
-        //this.length = array.length();
+    }
+
+    @SuppressWarnings("unchecked") //Quick fix, but what does it mean, and why is it needed?
+    public DynamicArray(int length){
+        this.array = (T[]) new Object[length];
     }
 
     // Now implement the methods from IndexAccess?
@@ -38,10 +41,5 @@ public class DynamicArray<T> implements IndexAccess<T>{
      */
     public void set(int i, T val){
         this.array[i] = val;
-    }
-
-    public static void main() {
-        Integer[] a = new Integer[5];
-        DynamicArray<Integer> Number = new DynamicArray<Integer>(a);
     }
 }

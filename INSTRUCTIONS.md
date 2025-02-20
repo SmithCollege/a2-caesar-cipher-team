@@ -10,7 +10,7 @@ The key tells you how many letters to offset the alphabet.
 For example, if the offset was 1, then we would translate A --> Z, B --> A, and C --> B.
 If the offset was 3, we would translate A --> X, B --> Y, C --> Z and D --> A.
 
-![Image of a Casesar Cipher from Geeks for Geeks](caesarCipher-geeksforgeeks.png "Caesar Cipher")
+![Image of a Casesar Cipher from Geeks for Geeks](caesarCipher.png "Caesar Cipher")
 
 Working through this homework will hopefully allow you to practice many of the Java and object-oriented programming skills you developed in CSC 120.
 We will also take some skills, such as writing unit tests, to a new level.

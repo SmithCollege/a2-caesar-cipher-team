@@ -18,20 +18,24 @@ public class CaesarCipher {
      * populating the alphabet
      * @param offset Offset to use when creating `cipher` of DynamicArray type
      */
-    CaesarCipher(int offset, Character[] alphabet){
-        this.alphabet = alphabet;
-        this.cipher = new DynamicArray<Character>(alphabet.length);
+    CaesarCipher(int offset){
+        this.alphabet = new Character[26];
+        for (int i = 0; i<26; i++){ //creates string of alphabet
+            alphabet[i] = Character.valueOf((char) ('a' + i));
+        }
+        this.cipher = new DynamicArray<Character>(alphabet.length); //creates an empty cipher array with same length as alphabet
         this.offset = offset;
 
-        // need to adjust this for when length of 
-        for (int i = 0; i<alphabet.length, i++){
-            this.cipher.set(i, alphabet[alphabet.offsetByCodePoints(alphabet, 0, )]);
+        //creates an offset character array
+        int i = 0;
+        while (i-this.offset<0){
+            this.cipher.set(i, Character.valueOf((char) ('a' + alphabet.length - (this.offset - i)))); 
+            i++;
         }
-        for (int i = 0; i < alphabet.length-offset; i++){
-            this.cipher.set(i, alphabet[i+offset]);
-        }
-        for (int i = alphabet.length-offset; i < alphabet.length; i++){
-            this.cipher.set(i, alphabet[i+offset]);
+        i = 0;
+        while (i+this.offset+1 <= alphabet.length){
+            this.cipher.set(i, Character.valueOf((char) ('a' + i - this.offset)));
+            i++;
         }
     }
 
@@ -41,21 +45,38 @@ public class CaesarCipher {
      * @return int indicating position of val in the alphabet array
      */
     public int findIndex(char val){
-        int position = 0;
-        for (int i=0; i<alphabet.length; i++){
-            if (alpahbet[i] = val){
-            position = alphabet[i];
+        for (int i=0; i < this.alphabet.length; i++){
+            if (this.alphabet[i].equals(val)){
+            return i;
             }
         }
-        return position;
+        throw new IndexOutOfBoundsException();
+    }
+
+    public int cipherFindIndex(char val){
+        for (int i=0; i < this.alphabet.length; i++){
+            if (this.cipher.get(i).equals(val)){
+            return i;
+            }
+        }
+        throw new IndexOutOfBoundsException();
     }
 
     /** Encode a message using the cipher
      * @param T message to encode
      * @return encoded message */  
     public String encode(String message){
-        // Fill in here and update return statement based on your code
-        return new String(); 
+        //create an empty array
+        Character[] array = new Character[message.length()];
+
+        int index = 0;
+        for (int i=0; i<message.length(); i++){
+            index = this.findIndex(message.charAt(i));
+            array [i] = this.cipher.get(index);
+        }
+        //for each element in the string message, find the character in the alphabet array, return its index alphabet[i],
+        //search for cipher[i], set array[i in the message loop] as the character of cipher[i] 
+        return array.toString(); 
      }
 
     /** Decode a message using the cipher 
@@ -65,11 +86,18 @@ public class CaesarCipher {
     */
     public String decode(String message){
         // Fill in here and update return statement based on your code
+        Character[] array = new Character[message.length()];
+
+        int index = 0;
+        for (int i=0; i<message.length(); i++){
+            index = this.cipherFindIndex(message.charAt(i));
+            array [i] = this.alphabet[index];
+        }
         return new String();
     }
 
     public static void main(String[] args) {
-     
-    
+        Integer[] a = new Integer[5];
+        DynamicArray<Integer> Number = new DynamicArray<Integer>(a);
     }
 }
