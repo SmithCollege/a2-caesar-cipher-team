@@ -32,11 +32,15 @@ public class CaesarCipher {
             this.cipher.set(i, Character.valueOf((char) ('a' + alphabet.length - (this.offset - i)))); 
             i++;
         }
-        i = 0;
+        i = 0; // instead maybe go from end and i--
         while (i+this.offset+1 <= alphabet.length){
             this.cipher.set(i, Character.valueOf((char) ('a' + i - this.offset)));
             i++;
         }
+    }
+
+    public char get(int i){
+        return this.cipher.get(i);
     }
 
     /** Implementation of linear search that looks through the alphabet
@@ -96,8 +100,21 @@ public class CaesarCipher {
         return new String();
     }
 
+    public void print(){
+        System.out.println("Now printing the cipher");
+        for (int i =0; i < this.alphabet.length; i++){
+            System.out.println(this.cipher.get(i));
+        }
+        System.out.println("Now printing the alphabet");
+        for (int i =0; i < this.alphabet.length; i++){
+            System.out.println(this.alphabet[i]);
+        }
+    }
+
     public static void main(String[] args) {
-        Integer[] a = new Integer[5];
-        DynamicArray<Integer> Number = new DynamicArray<Integer>(a);
+       // Integer[] a = new Integer[5];
+       // DynamicArray<Integer> Number = new DynamicArray<Integer>(a);
+        CaesarCipher classUnderTest = new CaesarCipher(3);
+        classUnderTest.print();
     }
 }
