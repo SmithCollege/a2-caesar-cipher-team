@@ -29,7 +29,7 @@ public class DynamicArrayTests {
         // Create the base arrays that we will use to create DynamicArrays
         createAlphabet();
 
-        DynamicArray<Character> alphaTest = new DynamicArray<Character>(0, this.alphabet);
+        DynamicArray<Character> alphaTest = new DynamicArray<Character>(this.alphabet);
         assertTrue("Is a returned by the 0 index?", alphaTest.get(0) == 'a');
         assertTrue("Is z returned by the 25th index?", alphaTest.get(25) == 'z');
     }
@@ -39,8 +39,8 @@ public class DynamicArrayTests {
         // Create the base arrays that we will use to create DynamicArrays
         createCount();
 
-        DynamicArray<Integer> numberTest = new DynamicArray<Integer>(0, this.count);
-        assertEquals("Is a returned by the 0 index?", numberTest.get(0) == 0);
+        DynamicArray<Integer> numberTest = new DynamicArray<Integer>(this.count);
+        assertTrue("Is a returned by the 0 index?", numberTest.get(0) == 0);
         assertTrue("Is z returned by the 9th index?", numberTest.get(9) == 9);
     }
 
@@ -49,16 +49,16 @@ public class DynamicArrayTests {
         // Create the base arrays that we will use to create DynamicArrays
         createAlphabet();
 
-        DynamicArray<Character> alphaTest = new DynamicArray<>(3, this.alphabet);
+        DynamicArray<Character> alphaTest = new DynamicArray<Character>(this.alphabet);
         System.out.println(alphaTest.get(0, 3));
-        assertEquals("Is d returned by the 0 index (offset 3)?",
-                alphaTest.get(0, 3).charValue(), 'd');
+        assertEquals("Is d returned by the 0 index (offset 3)?", 'd',
+                alphaTest.get(0, 3).charValue());
 
-        assertEquals("Is c returned by the -1 index (offset 3)?",
-                alphaTest.get(-1, 3).charValue(), 'c');
+        assertEquals("Is c returned by the -1 index (offset 3)?", 'c',
+                alphaTest.get(-1, 3).charValue());
 
-        assertEquals("Is a returned by the -3 index (offset 3)?",
-                alphaTest.get(-3, 3).charValue(), 'a');
+        assertEquals("Is a returned by the -3 index (offset 3)?", 'a',
+                alphaTest.get(-3, 3).charValue());
 
     }
 
@@ -67,7 +67,7 @@ public class DynamicArrayTests {
         // Create the base arrays that we will use to create DynamicArrays
         createCount();
 
-        DynamicArray<Integer> numberTest = new DynamicArray<Integer>(5, this.count);
+        DynamicArray<Integer> numberTest = new DynamicArray<Integer>(this.count);
         assertTrue("Is 5 returned by the 0 index?", numberTest.get(0, 5) == 5);
         assertTrue("Is 0 returned by the -5 index?", numberTest.get(-5, 5) == 0);
     }
